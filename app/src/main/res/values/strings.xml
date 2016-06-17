@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Sincerely</string>
+    <string name="action_settings">Settings</string>
+
+    <!--Login and Create Account fragments-->
+    <string name="email_field">Email</string>
+    <string name="password_field">Password</string>
+    <string name="password_verify_field">Verify Password</string>
+    <string name="login_button">Login</string>
+    <string name="create_account_text">Create a new Account</string>
+    <string name="create_account_button">Create Account</string>
+    <string name="password_match">Passwords do not match.</string>
+    <string name="password_length">Password must be at least 6 characters long!</string>
+    <string name="email_pattern">Must be a valid email.</string>
+</resources>

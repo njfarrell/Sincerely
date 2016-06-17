@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "576932718468",
+    "firebase_url": "https://sincerely-d7684.firebaseio.com",
+    "project_id": "sincerely-d7684",
+    "storage_bucket": "sincerely-d7684.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:576932718468:android:f1bbf448cd5a398e",
+        "android_client_info": {
+          "package_name": "com.njfarrell.android.sincerely"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "576932718468-m7pabglmntr335anchfo24h3jhhn8cd5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCo9BEfAcLfNfihMMYuIUOYRPQq5jT8Waw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
