@@ -8,7 +8,7 @@ import android.text.TextWatcher;
 public abstract class BaseLoginFragment extends Fragment {
 
     public interface LoginListener {
-        void showCreateAccount();
+        void showSignUp();
 
         void launchAccountActivity();
     }

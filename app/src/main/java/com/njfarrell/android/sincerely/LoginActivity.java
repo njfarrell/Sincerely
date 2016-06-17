@@ -5,9 +5,12 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.njfarrell.android.sincerely.login.BaseLoginFragment;
 import com.njfarrell.android.sincerely.login.LoginFragment;
-import com.njfarrell.android.sincerely.login.createaccount.CreateAccountFragment;
+import com.njfarrell.android.sincerely.login.signup.SignUpFragment;
+import com.njfarrell.android.sincerely.utils.PrefsUtil;
 
 public class LoginActivity extends AppCompatActivity implements BaseLoginFragment.LoginListener {
 
@@ -23,21 +26,24 @@ public class LoginActivity extends AppCompatActivity implements BaseLoginFragmen
     }
 
     @Override
-    public void showCreateAccount() {
+    public void showSignUp() {
         getSupportFragmentManager()
                 .beginTransaction()
                 .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left,
                         R.anim.enter_from_left, R.anim.exit_to_right)
-                .replace(R.id.fragment_container, new CreateAccountFragment())
+                .replace(R.id.fragment_container, new SignUpFragment())
                 .addToBackStack(null)
                 .commit();
     }
 
     @Override
     public void launchAccountActivity() {
-        // TODO store user UUID in preferences
-
-        Intent accountActivity = new Intent(this, AccountActivity.class);
-        startActivity(accountActivity);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            PrefsUtil.getInstance(this).storeUserUUID(user.getUid());
+            
+            Intent accountActivity = new Intent(this, AccountActivity.class);
+            startActivity(accountActivity);
+        }
     }
 }

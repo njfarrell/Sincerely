@@ -3,10 +3,10 @@
     <data>
         <variable
             name="viewModel"
-            type="com.njfarrell.android.sincerely.login.createaccount.CreateAccountViewModel"/>
+            type="com.njfarrell.android.sincerely.login.signup.SignUpViewModel"/>
         <variable
             name="handler"
-            type="com.njfarrell.android.sincerely.login.createaccount.CreateAccountHandler"/>
+            type="com.njfarrell.android.sincerely.login.signup.SignUpHandler"/>
     </data>
 
 

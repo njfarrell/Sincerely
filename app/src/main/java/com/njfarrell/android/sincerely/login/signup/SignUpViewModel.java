@@ -1,4 +1,4 @@
-package com.njfarrell.android.sincerely.login.createaccount;
+package com.njfarrell.android.sincerely.login.signup;
 
 import android.content.Context;
 import android.databinding.Bindable;
@@ -14,7 +14,7 @@ import com.njfarrell.android.sincerely.R;
 import com.njfarrell.android.sincerely.login.BaseLoginViewModel;
 import com.njfarrell.android.sincerely.utils.InputUtils;
 
-public class CreateAccountViewModel extends BaseLoginViewModel implements CreateAccountHandler {
+public class SignUpViewModel extends BaseLoginViewModel implements SignUpHandler {
 
 
 
@@ -32,7 +32,7 @@ public class CreateAccountViewModel extends BaseLoginViewModel implements Create
     private String reenterPassword;
     private Context context;
 
-    public CreateAccountViewModel(Context context, CreateAccountListener listener) {
+    public SignUpViewModel(Context context, CreateAccountListener listener) {
         this.createAccountListener = listener;
         this.context = context;
     }

@@ -54,7 +54,7 @@ public class LoginFragment extends BaseLoginFragment implements LoginViewModel.L
 
     @Override
     public void onClick(View view) {
-        listener.showCreateAccount();
+        listener.showSignUp();
     }
 
     @Override

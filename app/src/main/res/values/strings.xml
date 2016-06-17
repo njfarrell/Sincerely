@@ -1,17 +1,20 @@
 <resources>
     <string name="app_name">Sincerely</string>
     <string name="action_settings">Settings</string>
+    <string name="logo">Sincerely Logo</string>
 
-    <!--Login and Create Account fragments-->
+    <!--Login and Sign up-->
     <string name="email_field">Email</string>
     <string name="password_field">Password</string>
     <string name="password_verify_field">Verify Password</string>
     <string name="login_button">Login</string>
-    <string name="create_account_text">Create a new Account</string>
-    <string name="create_account_button">Create Account</string>
+    <string name="create_account_text">Sign up with a new Account</string>
+    <string name="create_account_button">Sign Up</string>
     <string name="password_match">Passwords do not match.</string>
     <string name="password_length">Password must be at least 6 characters long!</string>
     <string name="email_pattern">Must be a valid email.</string>
     <string name="invalid_email">Email does not exist.</string>
     <string name="incorrect_password">Password is incorrect.</string>
+
+    <!--User Account-->
 </resources>

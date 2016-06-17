@@ -1,4 +1,4 @@
-package com.njfarrell.android.sincerely.login.createaccount;
+package com.njfarrell.android.sincerely.login.signup;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -10,23 +10,23 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.njfarrell.android.sincerely.R;
-import com.njfarrell.android.sincerely.databinding.FragmentCreateAccountBinding;
+import com.njfarrell.android.sincerely.databinding.FragmentSignUpBinding;
 import com.njfarrell.android.sincerely.login.BaseLoginFragment;
 
-public class CreateAccountFragment extends BaseLoginFragment
-        implements CreateAccountViewModel.CreateAccountListener {
+public class SignUpFragment extends BaseLoginFragment
+        implements SignUpViewModel.CreateAccountListener {
 
-    private FragmentCreateAccountBinding binding;
-    private CreateAccountViewModel viewModel;
+    private FragmentSignUpBinding binding;
+    private SignUpViewModel viewModel;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater,
-                R.layout.fragment_create_account, container, false);
+                R.layout.fragment_sign_up, container, false);
 
-        viewModel = new CreateAccountViewModel(getContext(), this);
+        viewModel = new SignUpViewModel(getContext(), this);
 
         binding.setViewModel(viewModel);
         binding.setHandler(viewModel);
