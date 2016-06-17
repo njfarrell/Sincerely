@@ -12,4 +12,6 @@
     <string name="password_match">Passwords do not match.</string>
     <string name="password_length">Password must be at least 6 characters long!</string>
     <string name="email_pattern">Must be a valid email.</string>
+    <string name="invalid_email">Email does not exist.</string>
+    <string name="incorrect_password">Password is incorrect.</string>
 </resources>

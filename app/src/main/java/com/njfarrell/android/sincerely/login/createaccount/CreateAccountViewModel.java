@@ -67,11 +67,21 @@ public class CreateAccountViewModel extends BaseLoginViewModel implements Create
                 new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            createAccountListener.onSignUpCompleted();
+                        try {
+                            handleSignupComplete(task);
+                        } catch (Exception exception) {
+                            // Handle different necessary firebase exceptions
+                            exception.printStackTrace();
                         }
-                        //TODO logic for failed signup
                     }
                 });
+    }
+
+    private void handleSignupComplete(Task<AuthResult> task) throws Exception {
+        if (task.isSuccessful()) {
+            createAccountListener.onSignUpCompleted();
+        } else {
+            throw task.getException();
+        }
     }
 }

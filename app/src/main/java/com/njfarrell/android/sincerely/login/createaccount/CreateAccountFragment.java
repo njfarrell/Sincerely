@@ -61,17 +61,20 @@ public class CreateAccountFragment extends BaseLoginFragment
 
     @Override
     public void inavlidUsername(String error) {
-        binding.emailEdittext.setError(error);
+        binding.emailInputLayout.setError(error);
+        binding.emailInputLayout.setErrorEnabled(true);
     }
 
     @Override
     public void invalidPassword(String error) {
-        binding.passwordEdittext.setError(error);
+        binding.passwordInputLayout.setError(error);
+        binding.passwordInputLayout.setErrorEnabled(true);
     }
 
     @Override
     public void invalidPasswordMatch() {
-        binding.reenterPasswordEdittext.setError(getString(R.string.password_match));
+        binding.reenterPasswordInputLayout.setError(getString(R.string.password_match));
+        binding.reenterPasswordInputLayout.setErrorEnabled(true);
     }
 
     @Override

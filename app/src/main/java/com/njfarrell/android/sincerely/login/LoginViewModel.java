@@ -8,6 +8,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.njfarrell.android.sincerely.R;
 import com.njfarrell.android.sincerely.utils.InputUtils;
 
@@ -41,13 +43,27 @@ public class LoginViewModel extends BaseLoginViewModel implements LoginHandler {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         auth.signInWithEmailAndPassword(getEmail(), getPassword()).addOnCompleteListener(
                 new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    loginListener.onLoginCompleted();
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    try {
+                        handleLoginComplete(task);
+                    } catch (FirebaseAuthInvalidUserException userAuthException) {
+                        loginListener.inavlidUsername(context.getString(R.string.invalid_email));
+                    } catch (FirebaseAuthInvalidCredentialsException credentialException) {
+                        loginListener.invalidPassword(
+                                context.getString(R.string.incorrect_password));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
-                //TODO logic for failed auth
-            }
-        });
+            });
+    }
+
+    private void handleLoginComplete(Task<AuthResult> task) throws Exception {
+        if (task.isSuccessful()) {
+            loginListener.onLoginCompleted();
+        } else {
+            throw task.getException();
+        }
     }
 }
