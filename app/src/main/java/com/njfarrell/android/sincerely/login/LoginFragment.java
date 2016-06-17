@@ -1,22 +1,16 @@
 package com.njfarrell.android.sincerely.login;
 
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.njfarrell.android.sincerely.AccountActivity;
 import com.njfarrell.android.sincerely.R;
 import com.njfarrell.android.sincerely.databinding.FragmentLoginBinding;
-import com.njfarrell.android.sincerely.login.createaccount.CreateAccountFragment;
 
-public class LoginFragment extends Fragment implements LoginViewModel.LoginListener,
+public class LoginFragment extends BaseLoginFragment implements LoginViewModel.LoginListener,
         View.OnClickListener {
 
     private FragmentLoginBinding binding;
@@ -41,48 +35,9 @@ public class LoginFragment extends Fragment implements LoginViewModel.LoginListe
         return binding.getRoot();
     }
 
-    private TextWatcher emailTextChangeListener = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence sequence, int start, int count, int after) {
-        }
-
-        @Override
-        public void onTextChanged(CharSequence sequence, int start, int before, int count) {
-        }
-
-        @Override
-        public void afterTextChanged(Editable editable) {
-            binding.emailInputLayout.setError(null);
-            binding.emailInputLayout.setErrorEnabled(false);
-            viewModel.setEmail(editable.toString());
-            viewModel.validateLogin();
-        }
-    };
-
-    private TextWatcher passwordTextChangeListener = new TextWatcher() {
-
-        @Override
-        public void beforeTextChanged(CharSequence sequence, int start, int count, int after) {
-        }
-
-        @Override
-        public void onTextChanged(CharSequence sequence, int start, int before, int count) {
-        }
-
-        @Override
-        public void afterTextChanged(Editable editable) {
-            binding.passwordInputLayout.setError(null);
-            binding.passwordInputLayout.setErrorEnabled(false);
-            viewModel.setPassword(editable.toString());
-            viewModel.validateLogin();
-        }
-    };
-
     @Override
     public void onLoginCompleted() {
-        // TODO store user UUID in preferences
-        Intent accountActivity = new Intent(getContext(), AccountActivity.class);
-        getActivity().startActivity(accountActivity);
+        listener.launchAccountActivity();
     }
 
     @Override
@@ -99,13 +54,22 @@ public class LoginFragment extends Fragment implements LoginViewModel.LoginListe
 
     @Override
     public void onClick(View view) {
-        getActivity()
-                .getSupportFragmentManager()
-                .beginTransaction()
-                .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left,
-                        R.anim.enter_from_left, R.anim.exit_to_right)
-                .replace(R.id.fragment_container, new CreateAccountFragment())
-                .addToBackStack(null)
-                .commit();
+        listener.showCreateAccount();
+    }
+
+    @Override
+    public void handleEmailTextFieldChange(String email) {
+        binding.emailInputLayout.setError(null);
+        binding.emailInputLayout.setErrorEnabled(false);
+        viewModel.setEmail(email);
+        viewModel.validateLogin();
+    }
+
+    @Override
+    public void handlePasswordTextFieldChange(String password) {
+        binding.passwordInputLayout.setError(null);
+        binding.passwordInputLayout.setErrorEnabled(false);
+        viewModel.setPassword(password);
+        viewModel.validateLogin();
     }
 }
